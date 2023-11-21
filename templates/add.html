@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% from "bootstrap5/form.html" import render_form %}
+    <meta charset="UTF-8">
+    <title>Add a cafe</title>
+</head>
+<body>
+{{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+
+
+
+</body>
+</html>

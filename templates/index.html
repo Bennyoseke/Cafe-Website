@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Cafes</title>
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        strong {
+            color: #007BFF;
+        }
+
+        /* Add more styles as needed */
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-dark navbar-expand justify-content-between fixed-top container-fluid px-3">
+<a class="nav-link" href="{{ url_for('add_cafe') }}" class="fa fa-fw fa-plus-circle"></i>
+<span>Suggest Places</span>
+</a>
+</nav>
+<h1>CAFES</h1>
+    <ul>
+        {% for cafe in cafes %}
+            <li>
+                <div>
+                <img width="190" height="160" src="{{cafe[3]}}">
+                <strong>{{ cafe[1] }} - {{ cafe[4] }}</strong><br>
+                <a href="{{ cafe[2] }}" target="_blank">View Map</a><br>
+                Has Sockets: {{ cafe[5] }}<br>
+                Has Toilet: {{ cafe[6] }}<br>
+                Has WiFi: {{ cafe[7] }}<br>
+                Can Take Calls: {{ cafe[8] }}<br>
+                <form method="POST" action="{{ url_for('delete_cafe', cafe_id=cafe[0]) }}">
+                    <button type="submit">Delete</button>
+                </form>
+                <br>
+
+                </div>
+
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
